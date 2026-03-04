@@ -82,14 +82,15 @@ window.addEventListener('load', () => {
 
 
 /*** List Ucapan */
-const SCRIPT_ENDPOINT = "https://script.google.com/macros/s/AKfycbx2IDA-6RXkLB8wu5OXi7m9j1GoZdXfjFBeZnYmHFx_MbtarnLJwEN54p8SRG2O7K4PlA/exec";
+const SCRIPT_ENDPOINT = "https://script.google.com/macros/s/AKfycbyVjbx2J20d4LDvKSLiOoL6alshoTF-pKhM02D89rRSAQsmmisrLLi8WdkEeXp7bCwh/exec";
 
 async function loadUcapan() {
     const list = document.getElementById('ucapanList');
     list.innerHTML = '<p>Memuatkan ucapan…</p>';
 
     try {
-    const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(SCRIPT_ENDPOINT)}`, { cache: "no-store" });
+    
+    const res = await fetch(SCRIPT_ENDPOINT + "?t=" + new Date().getTime());
     const data = await res.json();
 
     if (!data || !data.length) {
