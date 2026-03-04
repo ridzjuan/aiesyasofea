@@ -177,7 +177,7 @@ function handleSubmit(e) {
 }
 
 // === Disable/Enable Bilangan Based on Kehadiran ===
-const hadirRadios = document.querySelectorAll('input[name="kehadiran"]');
+const hadirRadios = document.querySelectorAll('input[name="hadir"]');
 const bilanganSelect = document.getElementById('bilangan');
 
 hadirRadios.forEach(radio => {
