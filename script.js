@@ -196,25 +196,35 @@ hadirRadios.forEach(radio => {
 /***Nav Bar ***/
 // === Bottom Navigation Visibility ===
 const bottomNav = document.getElementById('bottomNav');
-const navLinks = bottomNav.querySelectorAll('a');
+const navLinks = bottomNav ? bottomNav.querySelectorAll('a') : [];
 let navVisible = false;
 
 function showBottomNav() {
-    bottomNav.style.transform = 'translateY(0)';
+    if(bottomNav){
+  bottomNav.style.transform = 'translateY(0)';
+}
     navVisible = true;
 }
 
 function hideBottomNav() {
-    bottomNav.style.transform = 'translateY(100%)';
+    if(bottomNav){
+  bottomNav.style.transform = 'translateY(100%)';
+}
     navVisible = false;
 }
 
 window.addEventListener('scroll', () => {
+
+  if(!bottomNav) return;
+
   const scrollY = window.scrollY;
   const heroHeight = window.innerHeight * 0.4;
 
-  if (scrollY > heroHeight && !navVisible) showBottomNav();
-  else if (scrollY <= heroHeight && navVisible) hideBottomNav();
+  if (scrollY > heroHeight && !navVisible)
+    showBottomNav();
+  else if (scrollY <= heroHeight && navVisible)
+    hideBottomNav();
+
 });
 
 document.getElementById('gmapBtn').href = 'https://maps.app.goo.gl/tjArwrCNnAWZuePj9';
